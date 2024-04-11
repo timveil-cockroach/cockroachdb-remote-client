@@ -14,4 +14,4 @@ COPY --from=builder /app/snapshot-dependencies/ ./
 COPY --from=builder /app/spring-boot-loader/ ./
 COPY --from=builder /app/application/ ./
 COPY --from=cockroach /cockroach/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
