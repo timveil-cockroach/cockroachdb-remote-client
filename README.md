@@ -63,6 +63,14 @@ docker build --no-cache --platform linux/arm64 -t timveil/cockroachdb-remote-cli
 docker push timveil/cockroachdb-remote-client:latest
 ```
 
+## Building and Publishing the Image with Docker Build Cloud
+```bash
+docker buildx build --builder cloud-timveil-cloudy \
+  --platform linux/amd64,linux/arm64 \
+  --tag timveil/cockroachdb-remote-client:latest \
+  --push .
+```
+
 ## Running the Image
 ```bash
 docker run -it timveil/cockroachdb-remote-client:latest
