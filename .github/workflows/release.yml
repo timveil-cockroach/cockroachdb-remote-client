@@ -60,3 +60,5 @@ jobs:
             timveil/cockroachdb-remote-client:${{ steps.version.outputs.full }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: true
+          sbom: true
