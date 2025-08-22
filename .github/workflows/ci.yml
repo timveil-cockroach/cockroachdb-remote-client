@@ -30,14 +30,24 @@ jobs:
       - name: Build and Test Docker Image
         run: |
           docker build -t cockroachdb-remote-client:test .
-          docker run --rm -d --name test-container \
+          # Run container and capture exit code (it's expected to exit after completing tasks)
+          docker run --name test-container \
             -e COCKROACH_HOST=localhost:26257 \
             -e COCKROACH_INSECURE=true \
             -e DATABASE_NAME=test \
-            cockroachdb-remote-client:test
-          sleep 5
+            cockroachdb-remote-client:test || EXIT_CODE=$?
+          
+          # Check logs to verify it ran
           docker logs test-container
-          docker stop test-container || true
+          
+          # Clean up container
+          docker rm test-container || true
+          
+          # The container should exit with code 0 or a connection error (expected without a real CockroachDB)
+          if [ ! -z "$EXIT_CODE" ] && [ "$EXIT_CODE" != "0" ] && [ "$EXIT_CODE" != "1" ]; then
+            echo "Container exited with unexpected code: $EXIT_CODE"
+            exit 1
+          fi
 
       - name: Run Trivy Security Scan
         uses: aquasecurity/trivy-action@master
