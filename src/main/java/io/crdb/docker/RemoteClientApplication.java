@@ -158,7 +158,7 @@ public class RemoteClientApplication implements ApplicationRunner {
 
         if (initCluster) {
             List<String> commands = new ArrayList<>();
-            commands.add("/cockroach");
+            commands.add("cockroach");
             commands.add("init");
             commands.add("--disable-cluster-name-verification");
 
@@ -166,11 +166,11 @@ public class RemoteClientApplication implements ApplicationRunner {
             handleProcess(builder);
         }
 
-        handleProcess(new ProcessBuilder("/cockroach", "sql", "--execute", "SET CLUSTER SETTING server.remote_debugging.mode = 'any'"));
+        handleProcess(new ProcessBuilder("cockroach", "sql", "--execute", "SET CLUSTER SETTING server.remote_debugging.mode = 'any'"));
 
         if (StringUtils.hasText(licenseOrg) && StringUtils.hasText(licenseKey)) {
             List<String> commands = new ArrayList<>();
-            commands.add("/cockroach");
+            commands.add("cockroach");
             commands.add("sql");
             commands.add("--execute");
             commands.add(String.format("SET CLUSTER SETTING cluster.organization = '%s'", licenseOrg));
@@ -183,7 +183,7 @@ public class RemoteClientApplication implements ApplicationRunner {
 
         if (StringUtils.hasText(databaseName)) {
             List<String> commands = new ArrayList<>();
-            commands.add("/cockroach");
+            commands.add("cockroach");
             commands.add("sql");
             commands.add("--execute");
             commands.add(String.format("CREATE DATABASE IF NOT EXISTS %s", databaseName));
@@ -194,7 +194,7 @@ public class RemoteClientApplication implements ApplicationRunner {
 
         if (StringUtils.hasText(databaseName) && StringUtils.hasText(databaseUser)) {
             List<String> commands = new ArrayList<>();
-            commands.add("/cockroach");
+            commands.add("cockroach");
             commands.add("sql");
             commands.add("--execute");
 
