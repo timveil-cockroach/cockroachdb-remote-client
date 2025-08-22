@@ -46,9 +46,9 @@ The application behavior is entirely controlled through environment variables:
 
 ### Required Variables
 - `COCKROACH_HOST` - CockroachDB host and port (`<host>:<port>`)
-- `COCKROACH_USER` - CockroachDB user for the session
 
 ### Connection Variables
+- `COCKROACH_USER` - CockroachDB user for the session (optional, not used in commands)
 - `COCKROACH_PORT` - Port if not specified in COCKROACH_HOST
 - `COCKROACH_INSECURE` - Use insecure connection (true/false)
 - `COCKROACH_CERTS_DIR` - Path to certificate directory
