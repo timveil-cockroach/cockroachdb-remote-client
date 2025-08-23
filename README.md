@@ -1,4 +1,9 @@
 # CockroachDB Remote Client
+
+[![CI Build and Test](https://github.com/timveil-cockroach/cockroachdb-remote-client/actions/workflows/ci.yml/badge.svg)](https://github.com/timveil-cockroach/cockroachdb-remote-client/actions/workflows/ci.yml)
+[![Release Docker Image](https://github.com/timveil-cockroach/cockroachdb-remote-client/actions/workflows/release.yml/badge.svg)](https://github.com/timveil-cockroach/cockroachdb-remote-client/actions/workflows/release.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/timveil/cockroachdb-remote-client)](https://hub.docker.com/repository/docker/timveil/cockroachdb-remote-client)
+
 Docker image used to perform simple tasks against a CockroachDB cluster then disappear.  For example, this can be useful for creating a database or setting configuration parameters, especially when used in Kubernetes or Docker Compose.  The following `docker-compose.yml` snippet highlights how it may be used, specifically the `crdb-init` service. 
 
 ```yaml
