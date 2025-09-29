@@ -8,7 +8,7 @@ RUN java -Djarmode=layertools -jar application.jar extract
 
 FROM cockroachdb/cockroach:latest AS cockroach
 
-FROM eclipse-temurin:21-jdk
+FROM eclipse-temurin:25-jdk
 
 # Create a non-root user for security
 RUN groupadd -r appuser && useradd -r -g appuser appuser
